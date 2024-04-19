@@ -26,6 +26,13 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseCors(builder =>
+    builder
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true)
+    .AllowCredentials());
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
